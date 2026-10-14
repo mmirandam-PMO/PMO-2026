@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Ejecutivo de Proyectos</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 30px;
+            color: #24292F;
+        }
+        .header-main {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #E1E4E8;
+            padding-bottom: 15px;
+        }
+        .header-main h1 {
+            font-size: 28px;
+            margin: 0 0 8px 0;
+        }
+        .header-main p {
+            margin: 0;
+            color: #57606A;
+            font-size: 15px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .column {
+            background-color: #F5F7FA;
+            border: 1px solid #E1E4E8;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .column-header {
+            color: #FFFFFF;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .project-item {
+            background-color: #FFFFFF;
+            border: 1px solid #E1E4E8;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        .owner {
+            font-weight: 700;
+            font-size: 13px;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        /* Colores por sección */
+        .bg-tec { background-color: #4A90E2; }
+        .bg-ris { background-color: #A04000; }
+        .bg-cli { background-color: #1F3A60; }
+        .bg-neg { background-color: #D35400; }
+        .bg-gen { background-color: #27AE60; }
+        .bg-laz { background-color: #8E44AD; }
+        
+        .tx-tec { color: #4A90E2; }
+        .tx-ris { color: #A04000; }
+        .tx-cli { color: #1F3A60; }
+        .tx-neg { color: #D35400; }
+        .tx-gen { color: #27AE60; }
+        .tx-laz { color: #8E44AD; }
+    </style>
+</head>
+<body>
+
+    <div class="header-main">
+        <h1>Reporte Ejecutivo de Proyectos</h1>
+        <p>💼 6 Clasificaciones Principales &nbsp;•&nbsp; ⚙️ Proyectos Activos</p>
+    </div>
+
+    <div class="grid-container">
+        <!-- COLUMNA 1 -->
+        <div class="column">
+            <div class="column-header bg-tec">
+                <span>⚙️ Actualización Tecnológica</span>
+                <span>9</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>Upgrade S4 HANNA (E R P)</span><span class="owner tx-tec">C. Budar</span></li>
+                <li class="project-item"><span>Herramientas IA</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>Implementación Middleware</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>Robustecimiento BKAYA 2026</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>CRM Objetivo</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>Content Manager (Filenet)</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>Migración a BAW Contenedores</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>DR API CONNECT</span><span class="owner tx-tec">M. Matus</span></li>
+                <li class="project-item"><span>Nuevo Core Bancario</span><span class="owner tx-tec">M. Matus</span></li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 2 -->
+        <div class="column">
+            <div class="column-header bg-ris">
+                <span>🛡️ Control Interno y Riesgos</span>
+                <span>12</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>Seguimiento Artículo 61</span><span class="owner tx-ris">A. Nava</span></li>
+                <li class="project-item"><span>Consultoría en PCI DSS</span><span class="owner tx-ris">G. Hdez</span></li>
+                <li class="project-item"><span>Reportes Reportware</span><span class="owner tx-ris">C. Budar</span></li>
+                <li class="project-item"><span>Migración Campo c63 al c57</span><span class="owner tx-ris">A. Nava</span></li>
+                <li class="project-item"><span>Req. Regulatorios</span><span class="owner tx-ris">TBD</span></li>
+                <li class="project-item"><span>Monitor Plus</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>Integridad Software Core</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>Actualización</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>-3D Secure 2.0</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>Protocolo PUI Personas</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>DIMO</span><span class="owner tx-ris">C. Carreón</span></li>
+                <li class="project-item"><span>CODI</span><span class="owner tx-ris">C. Carreón</span></li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 3 -->
+        <div class="column">
+            <div class="column-header bg-cli">
+                <span>👥 Enfoque al Cliente</span>
+                <span>14</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>Incidencias SPEI</span><span class="owner tx-cli">S. Oliv</span></li>
+                <li class="project-item"><span>Excepción Biométrica</span><span class="owner tx-cli">S. Oliv</span></li>
+                <li class="project-item"><span>Reingeniería IVR</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Automatización trxs POS</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Reportes Control Central</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Identificación Solicitudes</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Tablero Banca Patrimonial</span><span class="owner tx-cli">C. Budar</span></li>
+                <li class="project-item"><span>Apertura Cuentas Físicas</span><span class="owner tx-cli">C. Budar</span></li>
+                <li class="project-item"><span>Comprobantes Inversión</span><span class="owner tx-cli">C. Budar</span></li>
+                <li class="project-item"><span>Estudios de mercado</span><span class="owner tx-cli">R. Flores</span></li>
+                <li class="project-item"><span>Automatización (3 sows)</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Vista Integral 360</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>Soporte Agente Numia</span><span class="owner tx-cli">A. Nava</span></li>
+                <li class="project-item"><span>NPS</span><span class="owner tx-cli">A. Nava</span></li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 4 -->
+        <div class="column">
+            <div class="column-header bg-neg">
+                <span>📈 Estrategias de Negocio</span>
+                <span>3</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>Cuenta Rocket</span><span class="owner tx-neg">C. Budar</span></li>
+                <li class="project-item"><span>CRÉDITOS PYMES</span><span class="owner tx-neg">C. Budar</span></li>
+                <li class="project-item"><span>Cash Loans</span><span class="owner tx-neg">S. Olivero</span></li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 5 -->
+        <div class="column">
+            <div class="column-header bg-gen">
+                <span>🚀 Nueva Generación</span>
+                <span>3</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>Oferta Dinámica 2.0</span><span class="owner tx-gen">S. Oliv</span></li>
+                <li class="project-item"><span>Definición Stack Tecnol.</span><span class="owner tx-gen">M. Matus</span></li>
+                <li class="project-item"><span>Aplicación Inversiones</span><span class="owner tx-gen">S. Oliv</span></li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 6 -->
+        <div class="column">
+            <div class="column-header bg-laz">
+                <span>🤝 Programa Lazos</span>
+                <span>3</span>
+            </div>
+            <ul class="project-list">
+                <li class="project-item"><span>WhatsApp Lead Salesforce</span><span class="owner tx-laz">A. Nava</span></li>
+                <li class="project-item"><span>Automatización Lazos</span><span class="owner tx-laz">A. Nava</span></li>
+                <li class="project-item"><span>Apertura Cuenta + Crédito</span><span class="owner tx-laz">R. Cohen</span></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
