@@ -4,4 +4,4 @@
 ---
 
 ![](portafolio.svg)
-<img src="./portafolio.svg" width="100%" />
+
