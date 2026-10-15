@@ -1,0 +1,81 @@
+:root {
+  --navy: #1B355D;
+  --bg-main: #F7F8FA;
+  --white: #ffffff;
+  --border: #E1E4E8;
+  --text-dark: #24292F;
+  --text-muted: #6B7280;
+  --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
+
+header.masthead {
+  background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
+  color: var(--white);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 14px rgba(27,42,74,.28);
+  margin-bottom: 28px;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+.brand-top { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #7DACE2; letter-spacing: .5px; }
+.brand h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; }
+
+input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px; width: 280px; font-size: 13px; outline: none; }
+.search-area input { background: rgba(255,255,255,0.15); color: var(--white); border-color: rgba(255,255,255,0.25); }
+.search-area input::placeholder { color: rgba(255,255,255,0.7); }
+.search-area input:focus { background: var(--white); color: var(--text-dark); }
+
+/* Cuadrícula maestra de tres columnas */
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+/* Forzar alineación limpia hacia arriba sin desfases */
+.column { display: flex; flex-direction: column; gap: 24px; justify-content: flex-start; align-items: stretch; }
+.card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+
+/* Bordes superiores con degradados según el diseño nativo */
+.header-minorista { border-top: 5px solid; border-image: linear-gradient(90deg, #4A90E2 0%, #2980B9 100%) 1; }
+.header-regulatorios { border-top: 5px solid; border-image: linear-gradient(90deg, #A04000 0%, #D35400 100%) 1; }
+.header-mayorista { border-top: 5px solid; border-image: linear-gradient(90deg, #D35400 0%, #F39C12 100%) 1; }
+.header-hub { border-top: 5px solid; border-image: linear-gradient(90deg, #BDC3C7 0%, #7F8C8D 100%) 1; }
+.header-carryover { border-top: 5px solid; border-image: linear-gradient(90deg, #1F3A60 0%, #34495E 100%) 1; }
+
+/* Títulos de los programas */
+.card-head { padding: 16px 20px; background: #FAFBFC; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.card-head h2 { font-family: 'Merriweather', serif; font-size: 21px; font-weight: 800; color: var(--navy); }
+.badge { background: rgba(27,42,74,0.08); color: var(--navy); padding: 4px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+
+.section-area { padding: 14px 18px; border-bottom: 1px solid #FAFBFD; }
+.section-area:last-child { border-bottom: none; }
+.section-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.section-title { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+.subprogram-leads { font-size: 12px; font-weight: 700; color: #00788A; margin-bottom: 8px; }
+
+/* Sub-bloques internos (Banca de Empresas / Gobierno en Mayorista) */
+.subprogram-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.subprogram-card { background: #FAFBFD; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.subprogram-title { font-size: 13px; font-weight: 700; color: var(--navy); border-bottom: 1px dashed var(--border); padding-bottom: 4px; margin-bottom: 8px; }
+
+.proj-list { display: flex; flex-direction: column; gap: 6px; }
+.proj-row { background: #F5F7FA; padding: 10px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; transition: .15s; }
+.proj-row:hover { transform: translateX(3px); background: #EDF1F5; }
+.proj-name { font-weight: 500; line-height: 1.4; padding-right: 8px; flex-grow: 1; }
+
+/* Contenedor meta para estatus y dueño */
+.proj-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.proj-owner { font-size: 11px; font-weight: 700; background: #E2E8F0; color: #4A5568; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+.proj-owner.tbd { background: rgba(232,83,1,0.1); color: #E85301; }
+
+/* Badges de estatus específicos */
+.status-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.2px; white-space: nowrap; }
+.status-badge.en-proceso { background: rgba(39, 174, 96, 0.12); color: #27AE60; }
+.status-badge.planeado { background: rgba(41, 128, 185, 0.12); color: #2980B9; }
+.status-badge.no-planeado { background: rgba(192, 57, 43, 0.12); color: #C0392B; }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablero de Control Operativo · PMO 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra Superior / Masthead -->
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="brand-top">Portafolio Estratégico Corporativo</div>
+        <h1>Tablero de Control Operativo · PMO 2027</h1>
+      </div>
+      <div class="search-area">
+        <input type="text" id="search-input" placeholder="🔍 Buscar proyecto, responsable o estatus..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <!-- Cuadrícula Principal del Dashboard -->
+  <main class="wrap">
+    <div class="dashboard-grid">
+      <!-- Columna 1 -->
+      <div class="column" id="col-1"></div>
+      
+      <!-- Columna 2 -->
+      <div class="column" id="col-2"></div>
+      
+      <!-- Columna 3 -->
+      <div class="column" id="col-3"></div>
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
