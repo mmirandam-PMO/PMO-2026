@@ -2,17 +2,16 @@ function getProjectColor(q) {
   if (q.destacado === 'muted') return '#7F8C8D';
   if (q.destacado === 'blue') return '#1B355D';
   if (q.destacado === 'orange') return '#D35400';
-  if (q.destacado === 'red') return '#C0392B';
-  if (q.destacado === 'pink') return '#9B59B6';
   return '#24292F';
 }
 
 function getProgEmoji(name) {
-  if (name.includes('Minorista')) return '🔷';
-  if (name.includes('Regulatorios')) return '⚖️';
-  if (name.includes('Mayorista')) return '🔶';
-  if (name.includes('Hub')) return '🔘';
-  return '📂';
+  if (name.includes('Tecnológica')) return '💻';
+  if (name.includes('Riesgos')) return '🛡️';
+  if (name.includes('Cliente')) return '👥';
+  if (name.includes('Negocio')) return '📈';
+  if (name.includes('Generación')) return '🔘';
+  return '🤝';
 }
 
 function buildProjectRows(proyectos, term) {
@@ -31,10 +30,10 @@ function buildProjectRows(proyectos, term) {
 
       html += `
         <div class="proj-row">
-          <span class="proj-name" style="color: \${getProjectColor(q)}">\${q.nombre}</span>
+          <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
           <div class="proj-meta">
-            <span class="status-badge \${statusClass}">\${q.estatus || 'TBD'}</span>
-            <span class="proj-owner \${isTbd ? 'tbd' : ''}">\${q.responsable}</span>
+            <span class="status-badge ${statusClass}">${q.estatus || 'TBD'}</span>
+            <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
           </div>
         </div>
       `;
@@ -55,77 +54,38 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Columna 1
-  const minor = findProg('Banca Minorista');
-  if (minor) {
-    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>\${getProgEmoji(minor.nombre)} \${minor.nombre}</h2><span class="badge">\${minor.total_proyectos}</span></div>`;
-    minor.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
+  // Columna 1
+  const prog1 = findProg('Actualización Tecnológica');
+  if (prog1) inyectarCard(prog1, term, col1, 'header-tecnologica');
 
-  // 2. Regulatorios -> Columna 2
-  const reg = findProg('Regulatorios');
-  if (reg) {
-    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>\${getProgEmoji(reg.nombre)} \${reg.nombre}</h2><span class="badge">\${reg.total_proyectos}</span></div>`;
-    reg.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
+  const prog6 = findProg('Programa Lazos');
+  if (prog6) inyectarCard(prog6, term, col1, 'header-lazos');
 
-  // 3. Banca Mayorista -> Columna 1
-  const may = findProg('Banca Mayorista');
-  if (may) {
-    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>\${getProgEmoji(may.nombre)} \${may.nombre}</h2><span class="badge">\${may.total_proyectos}</span></div><div class="section-area">`;
-    
-    cardHtml += `<div class="subprogram-block-grid">`;
-    may.subprogramas.forEach(sp => {
-      const res = buildProjectRows(sp.proyectos, term);
-      if (res.matches > 0 || term === '') {
-        const leads = sp.responsables ? `<div class="subprogram-leads">\${sp.responsables.join(' / ')}</div>` : '';
-        cardHtml += `<div class="subprogram-card"><div class="subprogram-title">\${sp.nombre}</div>\${leads}<div class="proj-list">\${res.html}</div></div>`;
-      }
-    });
-    cardHtml += `</div>`;
+  // Columna 2
+  const prog2 = findProg('Control Interno y Riesgos');
+  if (prog2) inyectarCard(prog2, term, col2, 'header-riesgos');
 
-    may.transversales.forEach(t => {
-      const res = buildProjectRows(t.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div style="margin-top:14px;"><div class="section-info"><span class="section-title">\${t.tipo}</span></div><div class="proj-list">\${res.html}</div></div>`;
-    });
+  const prog4 = findProg('Estrategias de Negocio');
+  if (prog4) inyectarCard(prog4, term, col2, 'header-negocio');
 
-    cardHtml += `</div></div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
+  // Columna 3
+  const prog3 = findProg('Enfoque al Cliente');
+  if (prog3) inyectarCard(prog3, term, col3, 'header-cliente');
 
-  // 4. Hub de Innovación -> Columna 2
-  const hub = findProg('Hub de Innovación');
-  if (hub) {
-    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>\${getProgEmoji(hub.nombre)} \${hub.nombre}</h2><span class="badge">\${hub.total_proyectos}</span></div>`;
-    hub.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
+  const prog5 = findProg('Nueva Generación de');
+  if (prog5) inyectarCard(prog5, term, col3, 'header-hub');
+}
 
-  // 5. Carry-over 2026 -> Columna 3
-  const co = findProg('Carry-over 2026');
-  if (co) {
-    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>\${getProgEmoji(co.nombre)} \${co.nombre}</h2><span class="badge">\${co.total_proyectos}</span></div>`;
-    co.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col3.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
+function inyectarCard(prog, term, columna, claseEstilo) {
+  let cardHtml = `<div class="card ${claseEstilo}"><div class="card-head"><h2>${getProgEmoji(prog.nombre)} ${prog.nombre}</h2><span class="badge">${prog.total_proyectos}</span></div>`;
+  prog.categorias.forEach(c => {
+    const res = buildProjectRows(c.proyectos, term);
+    if (res.matches > 0 || term === '') {
+      cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+    }
+  });
+  cardHtml += `</div>`;
+  columna.appendChild(document.createRange().createContextualFragment(cardHtml));
 }
 
 document.getElementById('search-input').addEventListener('input', render);
