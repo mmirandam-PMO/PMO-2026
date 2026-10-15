@@ -3,5 +3,5 @@
 
 ---
 
-![](portafolio.svg)
+![](index.html)
 
